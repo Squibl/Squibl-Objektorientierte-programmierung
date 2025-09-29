@@ -5,8 +5,11 @@
 #include <math.h>
 
 //Klassen- und Schnittstellenfestlegungen
-
+void aufgabe1();
+void aufgabe2();
 
 int main(void){
+    
+    aufgabe2();
     return 0;
 }
