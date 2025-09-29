@@ -10,7 +10,7 @@
 int main(void){
 
     printf("Hallo\n");
-
-    printf("Hallo git!");
+    printf("Jall");
+    printf("Hallo git!"); //Test
     return 0;
 }
