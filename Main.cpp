@@ -10,7 +10,7 @@
 int main(void){
 
     printf("Hallo\n");
-    printf("Jall");
+    printf("Jall"); //Zezad adada
     printf("Hallo git!"); //Test
     return 0;
 }
