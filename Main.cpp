@@ -7,9 +7,11 @@
 //Klassen- und Schnittstellenfestlegungen
 void aufgabe1();
 void aufgabe2();
+void aufgabe3();
+void aufgabe4();
 
 int main(void){
     
-    aufgabe2();
+    aufgabe4();
     return 0;
 }
