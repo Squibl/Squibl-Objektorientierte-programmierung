@@ -12,5 +12,5 @@ int main(void){
     printf("Hallo\n");
     printf("Jall"); //Zez
     printf("Hallo git!"); //Test
-    return 0;
+    return 0; //RAAAAAAAAAAAAAAAAA
 }
