@@ -10,5 +10,7 @@
 int main(void){
 
     printf("Hallo\n");
+
+    printf("Hallo git!");
     return 0;
 }
