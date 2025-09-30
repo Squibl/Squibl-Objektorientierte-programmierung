@@ -24,8 +24,8 @@ void aufgabe4()
     MyFile.clear();  // Problem: Nach dem Zählen der Wörter ist Dateizeiger am Ende der Datei.
     MyFile.seekg(0); // Zeigen an den Anfang setzen
 
-    while (MyFile >> word) // C++ ist hexenwerk: Myfile ist in der Lage einständig seinen Zeiger umzusetzen
-    {
+    while (MyFile >> word){
+     // C++ ist hexenwerk: Myfile ist in der Lage einständig seinen Zeiger umzusetzen
         std::cout << word << std::endl;
     }
 

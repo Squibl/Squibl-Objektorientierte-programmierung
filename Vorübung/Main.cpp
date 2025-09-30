@@ -1,5 +1,5 @@
 //main : Objektorientierte Programmierung Praktikum A4 : V1 : 29.09.2025 : Jakob Onnen/ Liam Poppinga
-
+/*
 //Include Anweisungen
 #include <math.h>
 
@@ -14,3 +14,4 @@ int main(void){
     aufgabe4();
     return 0;
 }
+*/
