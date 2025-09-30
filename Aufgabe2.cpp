@@ -1,7 +1,7 @@
 // Aufgabe2 : Objektorientierte Programmierung Praktikum Gruppe A4 : V0 : 29.09.2025 : Jakob Onnen/ Liam Poppinga
 
 //Include Anweisungen
-#include <stdio.h>
+#include <iostream>
 
 void aufgabe2()
 {
@@ -15,10 +15,10 @@ void aufgabe2()
     }
 
     // Ausgabe der Werte
-    printf("Ausgabe Werte\n");
+    std::cout <<"Ausgabe Werte\n" << std::endl;
     for (int i = 0; i < rangeSize; i++)
     {
-        printf("%f : ", *array[i]);
+        std::cout << *array[i] << " : ";
     }
 
     //Speicher freigeben
