@@ -1,5 +1,5 @@
 //Fahrradladen : Objektorientierte Programmierung Praktikum A4 : V1 : 29.09.2025 : Jakob Onnen/ Liam Poppinga
-
+//https://www.w3schools.com/cpp/cpp_constructors.asp
 //Include Anweisungen
 #include <math.h>
 #include <iostream>
@@ -16,23 +16,24 @@ class Fahrrad{
         double preis;
     public:
         // Konstruktor zur Initialisierung aller Werte
-        Fahrrad(string m, string mo, int jahr, double p) : marke(m), modell(mo), modellJahr(jahr), preis(p) {}
-
-        // Get-Methoden
-        string getMarke() const { return marke; }
-        string getModell() const { return modell; }
-        int getModellJahr() const { return modellJahr; }
-        double getPreis() const { return preis; }
-
-        // Methode zur Ausgabe von Marke und Modell
-        void nenneMarkeModell(void) const {
-            cout << "Marke: " << marke << ", Modell: " << modell << endl;
+        Fahrrad(){
         }
+
+        //Methoden
+        void nenneMarkeModell(void){
+            cout << modell << endl << marke << endl;
+
+        }
+        
+
 };
 
 int main (void){
     
+    Fahrrad Fahr;
 
+
+    Fahr.nenneMarkeModell();
 
     return 0;
 }
