@@ -1,10 +1,8 @@
-// Fahrradladen : Objektorientierte Programmierung Praktikum A4 : V1 : 29.09.2025 : Jakob Onnen/ Liam Poppinga
-
 // Include Anweisungen
 #include <math.h>
 #include <iostream>
 #include <string>
-
+#include <vector>
 using namespace std;
 
 // Klassen- und Schnittstellenfestlegungen
@@ -41,11 +39,3 @@ public:
         cout << "Marke: " << marke << ", Modell: " << modell << endl;
     }
 };
-
-int main(void)
-{
-
-    Fahrrad Auto;
-    Auto.nenneMarkeModell();
-    return 0;
-}
