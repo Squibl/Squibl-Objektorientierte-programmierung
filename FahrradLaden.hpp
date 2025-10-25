@@ -11,22 +11,47 @@ using namespace std;
 class Fahrradladen
 {
 private:
-    vector<Fahrrad> Fahrrad;
-    vector<string> string[4];
+    vector<Fahrrad> FahrradVector;
+    vector<string> suchVector;
+  
 public:
     // Default Konstruktor
     Fahrradladen(){}
     // Konstruktor txt-Input
-    Fahrradladen(fstream File){
-    for (size_t i = 0; i < ; i++)
-    {
-    for (size_t i = 0; i < 4; i++)
-    {
-        File >> string;
-    }
+    Fahrradladen(fstream &file) {
+
+        string marke, modell;
+        int modellJahr;
+        double preis;
+
+        while (true) {
+            if (!(file >> marke >> modell >> modellJahr >> preis))
+                break; // Ende der Datei oder fehlerhafte Zeile
+
+            FahrradVector.push_back(Fahrrad(marke, modell, modellJahr, preis));
+            // Rest der Zeile überspringen
+            
+            file.ignore(1000, '\n');
+        }
 
     }
+
+    // Methode zur Ausgabe aller Fahrräder
+    void nenneFahrrader(void) const
+    {
+        for (size_t i = 0; i < FahrradVector.size(); i++)
+        {
+            FahrradVector.at(i).nenneMarkeModell();
+        }
+        cout << "Im Fahrradladen sind " << FahrradVector.size() << " Fahrrader vorhanden." << endl;
     }
 
-public:
+    void sucheMarke(string Marke) const {
+        for (size_t i = 0; i < FahrradVector.size(); i++) {
+            if (FahrradVector.at(i).getMarke() == Marke) {
+                suchVector.push_back(FahrradVector.at(i));
+            }
+        }
+    }
+
 };
