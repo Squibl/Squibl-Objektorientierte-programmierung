@@ -1,0 +1,61 @@
+#include <iostream>
+#include <string.h>
+#include <vector>
+
+// String-Class
+class String
+{
+    char *str;
+
+public:
+    // Konstruktor
+    String(const char *strInput)
+    {
+        // Allocate memory of size of strInput & copy strInput into allocated variablel pointer str
+        str = (char *)malloc(strlen(strInput) * sizeof(char));
+        strcpy(str, strInput);
+    }
+    // Destructor memory release
+    ~String()
+    {
+        free(str);
+    }
+
+    // Output Mehtod
+    void print()
+    {
+        std::cout << str;
+        std::cout << "\n";
+    }
+
+    // String merge
+    void add(const char *strInput)
+    {
+        char *strOverwriting = static_cast<char *>(malloc(strlen(str) + strlen(strInput) + 1));
+        strcpy(strOverwriting, str);
+        strcat(strOverwriting, strInput);
+        // Free up the old memory and set the pointer to the new memory
+
+        free(str);
+        str = strOverwriting;
+    }
+
+    // Size String
+    void size()
+    {
+        std::cout << "String lenght:" << strlen(str) + 1 << "\n";
+    }
+};
+
+int main()
+{
+    String Name("FH:");
+    Name.print();
+    Name.size();
+
+    Name.add("Emden/Leer");
+    Name.print();
+    Name.size();
+
+    return 0;
+}

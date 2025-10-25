@@ -27,13 +27,11 @@ class Fahrrad{
         
 
 };
-
+/*
 int main (void){
-    
-    Fahrrad Fahr;
-
+    Fahrrad Fahr;   
 
     Fahr.nenneMarkeModell();
-
     return 0;
 }
+    */
