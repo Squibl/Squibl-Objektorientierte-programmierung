@@ -15,8 +15,17 @@ class Fahrrad{
         int modellJahr;
         double preis;
     public:
+        // Default Konstruktor    
+        Fahrrad() {
+            modellJahr=-1;
+            preis=-1;
+        }
         // Konstruktor zur Initialisierung aller Werte
-        Fahrrad(string m, string mo, int jahr, double p) : marke(m), modell(mo), modellJahr(jahr), preis(p) {}
+        Fahrrad(string m) : Fahrrad(){marke=m;}
+        Fahrrad(string m, string mo) : Fahrrad(){} 
+        Fahrrad(string m, string mo, int jahr) : Fahrrad(m, mo){}
+        Fahrrad(string m, string mo, int jahr, double p) : Fahrrad(m, mo, jahr){}
+
 
         // Get-Methoden
         string getMarke() const { return marke; }
@@ -32,7 +41,7 @@ class Fahrrad{
 
 int main (void){
     
-
-
+    Fahrrad Auto();
+    Auto.nenneMarkeModell();
     return 0;
 }
