@@ -12,7 +12,7 @@ class Fahrradladen
 {
 private:
     vector<Fahrrad> FahrradVector;
-    vector<string> suchVector;
+    vector<Fahrrad> suchVector;
   
 public:
     // Default Konstruktor
@@ -24,33 +24,46 @@ public:
         int modellJahr;
         double preis;
 
-        while (true) {
-            if (!(file >> marke >> modell >> modellJahr >> preis))
-                break; // Ende der Datei oder fehlerhafte Zeile
+        while ((file >> marke >> modell >> modellJahr >> preis)) {
+         
 
-            FahrradVector.push_back(Fahrrad(marke, modell, modellJahr, preis));
-            // Rest der Zeile überspringen
-            
-            file.ignore(1000, '\n');
+        FahrradVector.push_back(Fahrrad(marke, modell, modellJahr, preis));
+        // Rest der Zeile überspringen
+        
+        file.ignore(1000, '\n');
         }
 
     }
 
     // Methode zur Ausgabe aller Fahrräder
-    void nenneFahrrader(void) const
+    void nenneFahrrader(const string markeSuche) 
     {
-        for (size_t i = 0; i < FahrradVector.size(); i++)
+     
+        if(markeSuche == "Alle"){
+            for (size_t i = 0; i < FahrradVector.size(); i++)
         {
             FahrradVector.at(i).nenneMarkeModell();
         }
         cout << "Im Fahrradladen sind " << FahrradVector.size() << " Fahrrader vorhanden." << endl;
+        }
+
+        else{
+        sucheMarke(markeSuche);
+        }
+        
     }
 
-    void sucheMarke(string Marke) const {
+    void sucheMarke(const string Marke) {
+
+        suchVector.clear();
         for (size_t i = 0; i < FahrradVector.size(); i++) {
             if (FahrradVector.at(i).getMarke() == Marke) {
-                suchVector.push_back(FahrradVector.at(i));
-            }
+                suchVector.push_back(FahrradVector.at(i));              
+            } 
+        }
+        for (size_t i = 0; i < suchVector.size(); i++)
+        {
+            suchVector.at(i).nenneMarkeModell();
         }
     }
 
