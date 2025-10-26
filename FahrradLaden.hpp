@@ -12,7 +12,7 @@ class Fahrradladen
 {
 private:
     vector<Fahrrad> FahrradVector;
-    vector<string> suchVector;
+    vector<Fahrrad> suchVector;
   
 public:
     // Default Konstruktor
@@ -46,7 +46,7 @@ public:
         cout << "Im Fahrradladen sind " << FahrradVector.size() << " Fahrrader vorhanden." << endl;
     }
 
-    void sucheMarke(string Marke) const {
+    void sucheMarke(string Marke) {
         for (size_t i = 0; i < FahrradVector.size(); i++) {
             if (FahrradVector.at(i).getMarke() == Marke) {
                 suchVector.push_back(FahrradVector.at(i));
