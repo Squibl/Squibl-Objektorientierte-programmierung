@@ -39,7 +39,7 @@ public:
     }
 
     // Methode zur Ausgabe aller Fahrräder
-    void nenneFahrrader()
+    void nenneFahrrader() const
     {
         for (size_t i = 0; i < fahrradVector.size(); i++)
         {
