@@ -52,12 +52,14 @@ public:
         else
         {
             sucheMarke(markeSuche);
+            // Ausgabe suchVector
+            for (size_t i = 0; i < suchVector.size(); i++)
+            {
+                suchVector.at(i).nenneMarkeModell();
+            }
+
         }
-        // Ausgabe suchVector
-        for (size_t i = 0; i < suchVector.size(); i++)
-        {
-            suchVector.at(i).nenneMarkeModell();
-        }
+
     }
 
     void sucheMarke(const string Marke)
