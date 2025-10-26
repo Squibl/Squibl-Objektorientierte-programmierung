@@ -10,6 +10,8 @@
 
 using namespace std;
 
+#define EXIT 3
+
 // Funktionen deklaration
 string toLowerCase(const string &str);
 
@@ -19,16 +21,25 @@ int main(void)
     fstream MyFile("fahrradliste.txt");
     Fahrradladen joghurt(MyFile);
     string markeSuche;
+    int wahl=EXIT;
 
     // While-Loop
     while (true)
     {
-        cout << "Welche Marken sollen ausgegeben werden? bsp.: alle / Cube. Schreibe exit um zu beenden" << endl;
-        cin >> markeSuche;
-        if (markeSuche == "exit")
+        cout << "Menue:\tWaehle einen Menuepunkt:\n" << "1:Programm beenden\n2:Alles Ausgeben\n3:Suche"<< endl;
+        cin >> wahl;
+        switch (wahl)
         {
+        case 1:
+            return 0;
+        case 2:
+            joghurt.nenneFahrrader(toLowerCase("Alle"));
+            break;
+        case 3:
+            cin >> markeSuche;
+            joghurt.nenneFahrrader(toLowerCase(markeSuche));
             break;
         }
-        joghurt.nenneFahrrader(toLowerCase(markeSuche));
+
     }
 }
