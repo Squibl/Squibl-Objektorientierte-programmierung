@@ -7,7 +7,7 @@
 
 using namespace std;
 
-// Klassen- und Schnittstellenfestlegungen
+// Klass Fahrrad
 class Fahrrad
 {
 private:

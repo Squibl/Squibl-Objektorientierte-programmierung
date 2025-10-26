@@ -10,30 +10,25 @@
 
 using namespace std;
 
-
-string toLowerCase(const string &str) {
-    string lowerStr = str;
-    
-    for (char &c : lowerStr) {
-        c = tolower(c);
-    }
-    lowerStr[0] = toupper(lowerStr[0]);
-    return lowerStr;
-}
+// Funktionen deklaration
+string toLowerCase(const string &str);
 
 int main(void)
 {
+    // Variablen/Objekte deklaration/definition
     fstream MyFile("fahrradliste.txt");
     Fahrradladen joghurt(MyFile);
-
-    while (true){
     string markeSuche;
-    cout << "Welche Marken sollen ausgegeben werden? bsp.: alle / Cube. Schreibe exit um zu beenden" << endl;
-    cin >> markeSuche;
-    if (markeSuche == "exit"){
-        break;
-    }
-    joghurt.nenneFahrrader(toLowerCase(markeSuche));
-    }
-}   
 
+    // While-Loop
+    while (true)
+    {
+        cout << "Welche Marken sollen ausgegeben werden? bsp.: alle / Cube. Schreibe exit um zu beenden" << endl;
+        cin >> markeSuche;
+        if (markeSuche == "exit")
+        {
+            break;
+        }
+        joghurt.nenneFahrrader(toLowerCase(markeSuche));
+    }
+}
