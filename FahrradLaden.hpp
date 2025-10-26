@@ -14,6 +14,7 @@ class Fahrradladen
 private:
     vector<Fahrrad> fahrradVector; // Fahrrad Container
     vector<Fahrrad> suchVector;    // Fahrrad Container - spez.Marke
+    string toLowerCase(const string &str);
 
 public:
     // Default Konstruktor
@@ -40,15 +41,16 @@ public:
     // Methode zur Ausgabe aller Fahrräder
     void nenneFahrrader()
     {
-
         for (size_t i = 0; i < fahrradVector.size(); i++)
         {
             fahrradVector.at(i).nenneMarkeModell();
         }
         cout << "Im Fahrradladen sind " << fahrradVector.size() << " Fahrrader vorhanden." << endl;
     }
-    void nenneFahrrader(const string markeSuche)
-    {
+    // Methode zur Ausgabe bestimmer Fahrradmarke
+    void nenneFahrrader(string markeSuche)
+    {   
+        markeSuche = toLowerCase(markeSuche);
         sucheMarke(markeSuche);
         // Ausgabe suchVector
         for (size_t i = 0; i < suchVector.size(); i++)
@@ -71,3 +73,13 @@ public:
         }
     }
 };
+
+string Fahrradladen::toLowerCase(const string &str) {
+    string lowerStr = str;
+    
+    for (char &c : lowerStr) {
+        c = (char)tolower(c);
+    }
+    lowerStr[0] = (char)toupper(lowerStr[0]);
+    return lowerStr;
+}
