@@ -26,16 +26,16 @@ int main(void)
     // While-Loop
     while (true)
     {
-        cout << "Menue:\tWaehle einen Menuepunkt:\n" << "1:Programm beenden\n2:Alles Ausgeben\n3:Suche"<< endl;
+        cout << "Option:\tWaehle einen Punkt:\n" << "1:Programm beenden\n2:Alles ausgeben\n3:Suche"<< endl;
         cin >> wahl;
         switch (wahl)
         {
-        case 1:
+        case 1:     //Programm beenden     
             return 0;
-        case 2:
-            joghurt.nenneFahrrader(toLowerCase("Alle"));
+        case 2:     //Alles ausgeben
+            joghurt.nenneFahrrader();
             break;
-        case 3:
+        case 3:     //Suche
             cin >> markeSuche;
             joghurt.nenneFahrrader(toLowerCase(markeSuche));
             break;

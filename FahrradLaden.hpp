@@ -38,28 +38,23 @@ public:
     }
 
     // Methode zur Ausgabe aller Fahrräder
-    void nenneFahrrader(const string markeSuche)
+    void nenneFahrrader()
     {
 
-        if (markeSuche == "Alle")
+        for (size_t i = 0; i < fahrradVector.size(); i++)
         {
-            for (size_t i = 0; i < fahrradVector.size(); i++)
-            {
-                fahrradVector.at(i).nenneMarkeModell();
-            }
-            cout << "Im Fahrradladen sind " << fahrradVector.size() << " Fahrrader vorhanden." << endl;
+            fahrradVector.at(i).nenneMarkeModell();
         }
-        else
+        cout << "Im Fahrradladen sind " << fahrradVector.size() << " Fahrrader vorhanden." << endl;
+    }
+    void nenneFahrrader(const string markeSuche)
+    {
+        sucheMarke(markeSuche);
+        // Ausgabe suchVector
+        for (size_t i = 0; i < suchVector.size(); i++)
         {
-            sucheMarke(markeSuche);
-            // Ausgabe suchVector
-            for (size_t i = 0; i < suchVector.size(); i++)
-            {
-                suchVector.at(i).nenneMarkeModell();
-            }
-
+            suchVector.at(i).nenneMarkeModell();
         }
-
     }
 
     void sucheMarke(const string Marke)
