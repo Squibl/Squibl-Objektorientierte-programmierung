@@ -21,15 +21,15 @@ int main(void)
     fstream MyFile("fahrradliste.txt");
     Fahrradladen joghurt(MyFile);
     string markeSuche;
-    int wahl;
+    int menüWahl;
 
     // While-Loop
     while (true)
     {
-        wahl = EXIT;
+        menüWahl = EXIT;
         cout << "Option:\tWaehle einen Punkt:\n"
              << "1:Programm beenden\n2:Alles ausgeben\n3:Suche" << endl;
-        cin >> wahl;
+        cin >> menüWahl;
 
         // IOSTREAM Error reset
         if (cin.fail())
@@ -40,7 +40,7 @@ int main(void)
         }
         else
         { // Menüpunkte
-            switch (wahl)
+            switch (menüWahl)
             {
             case 1: // Programm beenden
                 return 0;

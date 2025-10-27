@@ -14,6 +14,8 @@ class Fahrradladen
 private:
     vector<Fahrrad> fahrradVector; // Fahrrad Container
     vector<Fahrrad> suchVector;    // Fahrrad Container - spez.Marke
+
+    // Mehtode Deklaration
     string toLowerCase(const string &str);
 
 public:
@@ -49,7 +51,7 @@ public:
     }
     // Methode zur Ausgabe bestimmer Fahrradmarke
     void nenneFahrrader(string markeSuche)
-    {   
+    {
         markeSuche = toLowerCase(markeSuche);
         sucheMarke(markeSuche);
         // Ausgabe suchVector
@@ -74,10 +76,12 @@ public:
     }
 };
 
-string Fahrradladen::toLowerCase(const string &str) {
+string Fahrradladen::toLowerCase(const string &str)
+{
     string lowerStr = str;
-    
-    for (char &c : lowerStr) {
+
+    for (char &c : lowerStr)
+    {
         c = (char)tolower(c);
     }
     lowerStr[0] = (char)toupper(lowerStr[0]);

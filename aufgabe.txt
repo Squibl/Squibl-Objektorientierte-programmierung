@@ -1,0 +1,110 @@
+#include <iostream>
+#include <string.h>
+#include <vector>
+
+using namespace std;
+
+// String-Class
+class String
+{
+    char *str;
+
+public:
+    // Konstruktor
+    String()
+    {
+        str = (char *)malloc(sizeof(char));
+    }
+
+    String(const char *strInput)
+    {
+        // Allocate memory of size of strInput & copy strInput into allocated variablel pointer str
+        str = (char *)malloc(strlen(strInput) * sizeof(char));
+        strcpy(str, strInput);
+    }
+    // Destructor memory release
+    ~String()
+    {
+        free(str);
+    }
+
+    // Output Mehtod
+    void print()
+    {
+        std::cout << str;
+        std::cout << "\n";
+    }
+
+    // String merge
+    void add(const char *strInput)
+    {
+        char *strOverwriting = static_cast<char *>(malloc(strlen(str) + strlen(strInput) + 1));
+        strcpy(strOverwriting, str);
+        strcat(strOverwriting, strInput);
+        // Free up the old memory and set the pointer to the new memory
+
+        free(str);
+        str = strOverwriting;
+    }
+
+    // Size String
+    void size()
+    {
+        std::cout << "String lenght:" << strlen(str) + 1 << "\n";
+    }
+
+    // String Test auf Gleichheit
+    int isEqual(const char *equalChar)
+    {
+        int equalterm = 0;
+        if (strcmp(str, equalChar) == 0)
+        {
+            equalterm = 1;
+        }
+        return equalterm;
+    }
+
+    int find(const char *equalChar)
+    {
+        int inputGröße = strlen(equalChar);
+        int strObjekt = strlen(str);
+
+        // Wenn der zu suchende String länger ist als der Hauptstring, kann er nicht enthalten sein
+        if (inputGröße > strObjekt)
+        {
+            return -1;
+        }
+
+        for (int i = 0; i <= strObjekt - inputGröße; i++)
+        {
+            int gefunden = true;
+            for (int strIndex = 0; strIndex < inputGröße; strIndex++)
+            {
+                if (str[i + strIndex] != equalChar[strIndex])
+                {
+                    gefunden = false;
+                    break;
+                }
+            }
+            if (gefunden)
+            {
+                return i; // Start-Position zurückgeben
+            }
+        }
+        return -1; // Nicht gefunden
+    }
+};
+
+int main()
+{
+    String Name("FH:");
+    Name.print();
+    Name.size();
+
+    Name.add("Emden/Leer");
+    Name.print();
+
+    cout << Name.find("mden");
+
+    return 0;
+}
