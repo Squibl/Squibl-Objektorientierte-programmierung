@@ -29,7 +29,6 @@ public:
     Fahrrad(string m, string mo, int jahr) : Fahrrad(m, mo) { modellJahr = jahr; }
     Fahrrad(string m, string mo, int jahr, double p) : Fahrrad(m, mo, jahr) { preis = p; }
 
-
     // Get-Methoden
     string getMarke() const { return marke; }
     string getModell() const { return modell; }
@@ -37,11 +36,9 @@ public:
     double getPreis() const { return preis; }
 
     // Methode zur Ausgabe von Marke und Modell
-    void nenneMarkeModell(void) const
+    virtual void nenneMarkeModell(void) const
     {
-        cout << "Marke: " << marke << ", Modell: " << modell << endl;
+        cout << "Marke: " << getMarke() << ", Modell: " << getModell() << endl;
     }
-
-    void clone(void) const
-    {}
+    void clone
 };

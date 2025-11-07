@@ -19,6 +19,13 @@ public:
     E_Bike(string m, string mo, int jahr, double p, int ka);
 
     int getKapazitaet() const { return kapazitaet; }
+
+    //Override um Kapazität mit auszugeben 
+    void nenneMarkeModell(void) const override
+    {
+        cout << "Marke: " << getMarke() << ", Modell: " << getModell() << ", Kapazitaet: " << kapazitaet << "Wh" << endl;
+    }
+    
 };
 // Konstruktor
 E_Bike::E_Bike()
@@ -29,6 +36,7 @@ E_Bike::E_Bike(string m, string mo, int jahr, double p, int ka) : Fahrrad(m, mo,
 {
     kapazitaet = ka;
 }
+
 
 class MTB : public Fahrrad
 {
