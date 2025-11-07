@@ -40,4 +40,7 @@ public:
     {
         cout << "Marke: " << marke << ", Modell: " << modell << endl;
     }
+
+    void clone(void) const
+    {}
 };

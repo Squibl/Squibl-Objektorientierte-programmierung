@@ -14,8 +14,8 @@ using namespace std;
 class Fahrradladen
 {
 private:
-    vector<Fahrrad> fahrradVector; // Fahrrad Container
-    vector<Fahrrad> suchVector;    // Fahrrad Container - spez.Marke
+    vector<Fahrrad*> fahrradVector; // Fahrrad Container
+    vector<Fahrrad*> suchVector;    // Fahrrad Container - spez.Marke
 
     // Mehtode Deklaration
     string toLowerCase(const string &str);
@@ -96,4 +96,7 @@ string Fahrradladen::toLowerCase(const string &str)
     }
     lowerStr[0] = (char)toupper(lowerStr[0]);
     return lowerStr;
+}
+Fahrrad* Fahrradladen::cloneFahrrad(Fahrrad* fp){
+    return fp->clone();
 }
