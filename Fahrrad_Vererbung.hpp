@@ -25,6 +25,9 @@ public:
     {
         cout << "Marke: " << getMarke() << ", Modell: " << getModell() << ", Kapazitaet: " << kapazitaet << "Wh" << endl;
     }
+    string typeCheck(void) const override{
+        return("E-bike");
+    }
     
 };
 // Konstruktor
@@ -44,4 +47,8 @@ private:
     /* data */
 public:
     MTB(string m, string mo, int jahr, double p) : Fahrrad(m, mo, jahr, p) {}
+   
+    string typeCheck(void) const override{
+        return("Mtb");
+    }
 };

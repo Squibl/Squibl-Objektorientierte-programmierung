@@ -21,7 +21,6 @@ private:
     string toLowerCase(const string &str);
 
 public:
-    Fahrrad *cloneFahrrad(Fahrrad *fp);
     ~Fahrradladen();
     // Default Konstruktor
     Fahrradladen() {}
@@ -71,6 +70,21 @@ public:
         for (size_t i = 0; i < suchVector.size(); i++)
         {
             suchVector.at(i)->nenneMarkeModell();
+        }
+    }
+
+    void nenneFahrrader(int platzhalter, string typ)
+    {
+        typ = toLowerCase(typ);
+        suchVector.clear();
+        if(typ == "E-bike" || typ == "Mtb"){
+            for (size_t i = 0; i < fahrradVector.size(); i++)
+            {
+                if (fahrradVector.at(i)->typeCheck() == typ)
+                {
+                    fahrradVector.at(i)->nenneMarkeModell();
+                }
+            }
         }
     }
 
