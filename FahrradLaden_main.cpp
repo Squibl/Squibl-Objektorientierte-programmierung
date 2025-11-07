@@ -29,7 +29,7 @@ int main(void)
     {
         menüWahl = EXIT;
         cout << "\nOption:\tWaehle einen Punkt:\n"
-             << "1:Programm beenden\n2:Alles ausgeben\n3:Marke suchen\n4:Typ suchen" << endl;
+             << "1:Programm beenden\n2:Alles ausgeben\n3:Marke suchen\n4:Typ suchen (E-Bike/MTB)" << endl;
         cin >> menüWahl;
 
         
@@ -57,7 +57,7 @@ int main(void)
             case 4:                
                 cout << "Gebe den gesuchten Typ ein (E-Bike oder MTB): " << endl;
                 cin >> eingabeString;
-                Laden.nenneFahrrader(0, eingabeString);
+                Laden.nenneFahrrader(eingabeString);
                 break;
             default:
                 break;

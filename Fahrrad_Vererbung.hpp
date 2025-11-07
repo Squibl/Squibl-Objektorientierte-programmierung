@@ -14,41 +14,35 @@ private:
     int kapazitaet;
 
 public:
-    // Deklarationen
-    E_Bike();
-    E_Bike(string m, string mo, int jahr, double p, int ka);
+    // Konstruktor
+    E_Bike() { kapazitaet = -1; };
+    E_Bike(string m, string mo, int jahr, double p, int ka) : Fahrrad(m, mo, jahr, p) { kapazitaet = ka; }
 
+    // Get-Methode
     int getKapazitaet() const { return kapazitaet; }
 
-    //Override um Kapazität mit auszugeben 
+    // Override nenneMarkeModell + Kapazität
     void nenneMarkeModell(void) const override
     {
         cout << "Marke: " << getMarke() << ", Modell: " << getModell() << ", Kapazitaet: " << kapazitaet << "Wh" << endl;
     }
-    string typeCheck(void) const override{
-        return("E-bike");
-    }
-    
-};
-// Konstruktor
-E_Bike::E_Bike()
-{
-    kapazitaet = -1;
-}
-E_Bike::E_Bike(string m, string mo, int jahr, double p, int ka) : Fahrrad(m, mo, jahr, p)
-{
-    kapazitaet = ka;
-}
 
+    // Methode zu Überprüfung ob E-Bike oder MTB
+    string typeCheck(void) const override
+    {
+        return ("E-bike");
+    }
+};
 
 class MTB : public Fahrrad
 {
-private:
-    /* data */
 public:
+    // Konstruktor - Vererbung Fahrrad
     MTB(string m, string mo, int jahr, double p) : Fahrrad(m, mo, jahr, p) {}
-   
-    string typeCheck(void) const override{
-        return("Mtb");
+
+    // Methode zu Überprüfung ob E-Bike oder MTB
+    string typeCheck(void) const override
+    {
+        return ("Mtb");
     }
 };

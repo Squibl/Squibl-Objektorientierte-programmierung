@@ -40,7 +40,7 @@ public:
     {
         cout << "Marke: " << getMarke() << ", Modell: " << getModell() << endl;
     }
-    virtual string typeCheck(void) const{
-        return("Fahrrad");
-    }
+
+    // Methode zu Überprüfung ob E-Bike oder MTB
+    virtual string typeCheck(void) const{return("Fahrrad");}
 };

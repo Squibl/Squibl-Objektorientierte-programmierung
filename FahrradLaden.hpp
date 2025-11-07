@@ -65,29 +65,27 @@ public:
     void nenneFahrrader(string markeSuche)
     {
         markeSuche = toLowerCase(markeSuche);
-        sucheMarke(markeSuche);
-        // Ausgabe suchVector
-        for (size_t i = 0; i < suchVector.size(); i++)
+        if (markeSuche == "E-bike" || markeSuche == "Mtb")
         {
-            suchVector.at(i)->nenneMarkeModell();
-        }
-    }
-
-    void nenneFahrrader(int platzhalter, string typ)
-    {
-        typ = toLowerCase(typ);
-        suchVector.clear();
-        if(typ == "E-bike" || typ == "Mtb"){
             for (size_t i = 0; i < fahrradVector.size(); i++)
             {
-                if (fahrradVector.at(i)->typeCheck() == typ)
+                if (fahrradVector.at(i)->typeCheck() == markeSuche)
                 {
                     fahrradVector.at(i)->nenneMarkeModell();
                 }
             }
         }
+        else
+        {
+            sucheMarke(markeSuche);
+            // Ausgabe suchVector
+            for (size_t i = 0; i < suchVector.size(); i++)
+            {
+                suchVector.at(i)->nenneMarkeModell();
+            }
+        }
     }
-
+    // Methode zur Suche einer bestimmten Marke
     void sucheMarke(const string Marke)
     {
 
