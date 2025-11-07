@@ -14,13 +14,15 @@ using namespace std;
 class Fahrradladen
 {
 private:
-    vector<Fahrrad*> fahrradVector; // Fahrrad Container
-    vector<Fahrrad*> suchVector;    // Fahrrad Container - spez.Marke
+    vector<Fahrrad *> fahrradVector; // Fahrrad Container
+    vector<Fahrrad *> suchVector;    // Fahrrad Container - spez.Marke
 
     // Mehtode Deklaration
     string toLowerCase(const string &str);
 
 public:
+    Fahrrad *cloneFahrrad(Fahrrad *fp);
+    ~Fahrradladen();
     // Default Konstruktor
     Fahrradladen() {}
     // Konstruktor txt-Input
@@ -37,13 +39,14 @@ public:
         while ((file >> marke >> modell >> modellJahr >> preis >> fahrradTyp))
         {
 
-            if (fahrradTyp == "E-Bike"){
+            if (fahrradTyp == "E-Bike")
+            {
                 file >> kapazitaet;
-                fahrradVector.push_back(E_Bike(marke, modell, modellJahr, preis, kapazitaet));
+                fahrradVector.push_back(new E_Bike(marke, modell, modellJahr, preis, kapazitaet));
             }
             else if (fahrradTyp == "MTB")
             {
-                fahrradVector.push_back(MTB(marke, modell, modellJahr, preis));
+                fahrradVector.push_back(new MTB(marke, modell, modellJahr, preis));
             }
             // Rest der Zeile überspringen
             file.ignore(IGNORE, '\n');
@@ -55,7 +58,7 @@ public:
     {
         for (size_t i = 0; i < fahrradVector.size(); i++)
         {
-            fahrradVector.at(i).nenneMarkeModell();
+            fahrradVector.at(i)->nenneMarkeModell();
         }
         cout << "Im Fahrradladen sind " << fahrradVector.size() << " Fahrrader vorhanden." << endl;
     }
@@ -67,7 +70,7 @@ public:
         // Ausgabe suchVector
         for (size_t i = 0; i < suchVector.size(); i++)
         {
-            suchVector.at(i).nenneMarkeModell();
+            suchVector.at(i)->nenneMarkeModell();
         }
     }
 
@@ -78,7 +81,7 @@ public:
         // Vergleicht jedes fahrrad Objekt im Container mit Marke
         for (size_t i = 0; i < fahrradVector.size(); i++)
         {
-            if (fahrradVector.at(i).getMarke() == Marke)
+            if (fahrradVector.at(i)->getMarke() == Marke)
             {
                 suchVector.push_back(fahrradVector.at(i));
             }
@@ -97,6 +100,13 @@ string Fahrradladen::toLowerCase(const string &str)
     lowerStr[0] = (char)toupper(lowerStr[0]);
     return lowerStr;
 }
-Fahrrad* Fahrradladen::cloneFahrrad(Fahrrad* fp){
-    return fp->clone();
+
+Fahrradladen::~Fahrradladen()
+{
+    suchVector.clear();
+    // Löschen aller dynamischen Variablen
+    for (Fahrrad *f : fahrradVector)
+    {
+        delete f;
+    }
 }

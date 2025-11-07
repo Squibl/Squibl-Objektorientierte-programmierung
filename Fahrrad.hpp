@@ -29,6 +29,7 @@ public:
     Fahrrad(string m, string mo, int jahr) : Fahrrad(m, mo) { modellJahr = jahr; }
     Fahrrad(string m, string mo, int jahr, double p) : Fahrrad(m, mo, jahr) { preis = p; }
 
+
     // Get-Methoden
     string getMarke() const { return marke; }
     string getModell() const { return modell; }
