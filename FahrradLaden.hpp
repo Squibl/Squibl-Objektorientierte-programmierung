@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <fstream>
+#include <map>
 #include "Fahrrad_Vererbung.hpp"
 
 using namespace std;
@@ -65,23 +66,26 @@ public:
     void nenneFahrrader(string markeSuche)
     {
         markeSuche = toLowerCase(markeSuche);
-        if (markeSuche == "E-bike" || markeSuche == "Mtb")
+        sucheMarke(markeSuche);
+        // Ausgabe suchVector
+        for (size_t i = 0; i < suchVector.size(); i++)
+        {
+            suchVector.at(i)->nenneMarkeModell();
+        }
+    }
+    // Methoed zur Ausgabe bestimmten Fahrradtyps
+    void nenneFahrrader(int platzhalter, string typ)
+    {
+        typ = toLowerCase(typ);
+        suchVector.clear();
+        if (typ == "E-bike" || typ == "Mtb")
         {
             for (size_t i = 0; i < fahrradVector.size(); i++)
             {
-                if (fahrradVector.at(i)->typeCheck() == markeSuche)
+                if (fahrradVector.at(i)->typeCheck() == typ)
                 {
                     fahrradVector.at(i)->nenneMarkeModell();
                 }
-            }
-        }
-        else
-        {
-            sucheMarke(markeSuche);
-            // Ausgabe suchVector
-            for (size_t i = 0; i < suchVector.size(); i++)
-            {
-                suchVector.at(i)->nenneMarkeModell();
             }
         }
     }

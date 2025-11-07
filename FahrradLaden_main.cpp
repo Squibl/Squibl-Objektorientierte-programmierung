@@ -3,6 +3,7 @@
 #include <math.h>
 #include <iostream>
 #include <string>
+#include <map>
 #include <vector>
 #include "FahrradLaden.hpp"
 #include <fstream>
@@ -57,7 +58,7 @@ int main(void)
             case 4:                
                 cout << "Gebe den gesuchten Typ ein (E-Bike oder MTB): " << endl;
                 cin >> eingabeString;
-                Laden.nenneFahrrader(eingabeString);
+                Laden.nenneFahrrader(0, eingabeString);
                 break;
             default:
                 break;

@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <fstream>
+#include <map>
 
 using namespace std;
 
@@ -29,6 +30,9 @@ public:
     Fahrrad(string m, string mo, int jahr) : Fahrrad(m, mo) { modellJahr = jahr; }
     Fahrrad(string m, string mo, int jahr, double p) : Fahrrad(m, mo, jahr) { preis = p; }
 
+    // Destruktor
+    ~Fahrrad(){}
+
     // Get-Methoden
     string getMarke() const { return marke; }
     string getModell() const { return modell; }
@@ -43,4 +47,9 @@ public:
 
     // Methode zu Überprüfung ob E-Bike oder MTB
     virtual string typeCheck(void) const{return("Fahrrad");}
+
+    virtual map <string, string> getProperties() const{
+        return {{"Marke",getMarke()},{"Modell", getModell()},{"Modelljahr", to_string(modellJahr) },{"Preis", to_string(preis)}};
+    };
+
 };
