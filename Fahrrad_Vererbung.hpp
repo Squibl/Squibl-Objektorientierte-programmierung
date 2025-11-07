@@ -33,9 +33,11 @@ public:
     {
         return ("E-bike");
     }
-    map <string, string> getProperties() const override{
-            return {{"Marke",getMarke()},{"Modell", getModell()},{"Modelljahr", to_string(getModellJahr()) },{"Preis", to_string(getPreis())},{"Kapazitaet",to_string(kapazitaet)}};
-        };    
+    // Map der einzelnen Properties
+    map<string, string> getProperties() const override
+    {
+        return {{"Marke", getMarke()}, {"Modell", getModell()}, {"Modelljahr", to_string(getModellJahr())}, {"Preis", to_string(getPreis())}, {"Kapazitaet", to_string(kapazitaet)}};
+    };
 };
 
 class MTB : public Fahrrad
@@ -49,6 +51,4 @@ public:
     {
         return ("Mtb");
     }
-
-       
 };
