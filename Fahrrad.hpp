@@ -40,5 +40,7 @@ public:
     {
         cout << "Marke: " << getMarke() << ", Modell: " << getModell() << endl;
     }
-    void clone
+    virtual string typeCheck(void) const{
+        return("Fahrrad");
+    }
 };

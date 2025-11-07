@@ -21,15 +21,15 @@ int main(void)
     // Variablen/Objekte deklaration/definition
     fstream MyFile("fahrradliste.txt");
     Fahrradladen Laden(MyFile);
-    string markeSuche;
+    string eingabeString;
     int menüWahl;
 
     // While-Loop
     while (true)
     {
         menüWahl = EXIT;
-        cout << "Option:\tWaehle einen Punkt:\n"
-             << "1:Programm beenden\n2:Alles ausgeben\n3:Suche" << endl;
+        cout << "\nOption:\tWaehle einen Punkt:\n"
+             << "1:Programm beenden\n2:Alles ausgeben\n3:Marke suchen\n4:Typ suchen" << endl;
         cin >> menüWahl;
 
         
@@ -51,8 +51,13 @@ int main(void)
                 break;
             case 3: // Suche
                 cout << "Gebe die gesuchte Marke ein: " << endl;
-                cin >> markeSuche;
-                Laden.nenneFahrrader(markeSuche);
+                cin >> eingabeString;
+                Laden.nenneFahrrader(eingabeString);
+                break;
+            case 4:                
+                cout << "Gebe den gesuchten Typ ein (E-Bike oder MTB): " << endl;
+                cin >> eingabeString;
+                Laden.nenneFahrrader(0, eingabeString);
                 break;
             default:
                 break;
