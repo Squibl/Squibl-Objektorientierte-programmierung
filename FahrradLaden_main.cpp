@@ -19,7 +19,7 @@ int main(void)
 {
     // Variablen/Objekte deklaration/definition
     fstream MyFile("fahrradliste.txt");
-    Fahrradladen joghurt(MyFile);
+    Fahrradladen Laden(MyFile);
     string markeSuche;
     int menüWahl;
 
@@ -45,11 +45,12 @@ int main(void)
             case 1: // Programm beenden
                 return 0;
             case 2: // Alles ausgeben
-                joghurt.nenneFahrrader();
+                Laden.nenneFahrrader();
                 break;
             case 3: // Suche
+                cout << "Gebe die gesuchte Marke ein: " << endl;
                 cin >> markeSuche;
-                joghurt.nenneFahrrader(markeSuche);
+                Laden.nenneFahrrader(markeSuche);
                 break;
             default:
                 break;
