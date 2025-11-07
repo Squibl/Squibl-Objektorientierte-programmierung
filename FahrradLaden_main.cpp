@@ -7,6 +7,7 @@
 #include "FahrradLaden.hpp"
 #include <fstream>
 #include <cctype>
+#define IGNORE 1000
 
 using namespace std;
 
@@ -31,11 +32,12 @@ int main(void)
              << "1:Programm beenden\n2:Alles ausgeben\n3:Suche" << endl;
         cin >> menüWahl;
 
+        
         // IOSTREAM Error reset
         if (cin.fail())
         {
             cin.clear();
-            cin.ignore();
+            cin.ignore(IGNORE, '\n');
             continue;
         }
         else
