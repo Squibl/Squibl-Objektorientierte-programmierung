@@ -53,12 +53,12 @@ int main(void)
             case 3: // Suche
                 cout << "Gebe die gesuchte Marke ein: " << endl;
                 cin >> eingabeString;
-                Laden.nenneFahrrader(eingabeString);
+                Laden.sucheMarke(eingabeString);
                 break;
             case 4:                
                 cout << "Gebe den gesuchten Typ ein (E-Bike oder MTB): " << endl;
                 cin >> eingabeString;
-                Laden.nenneFahrrader(0, eingabeString);
+                Laden.sucheTyp(eingabeString);
                 break;
             default:
                 break;

@@ -1,3 +1,8 @@
+//Header Guards
+#ifndef FAHRRAD_HPP
+#define FAHRRAD_HPP
+
+
 // Include Anweisungen
 #include <math.h>
 #include <iostream>
@@ -19,37 +24,28 @@ private:
 
 public:
     // Default Konstruktor
-    Fahrrad()
-    {
-        modellJahr = -1;
-        preis = -1;
-    }
+    Fahrrad();
     // Konstruktor zur Initialisierung aller Werte
-    Fahrrad(string m) : Fahrrad() { marke = m; }
-    Fahrrad(string m, string mo) : Fahrrad(m) { modell = mo; }
-    Fahrrad(string m, string mo, int jahr) : Fahrrad(m, mo) { modellJahr = jahr; }
-    Fahrrad(string m, string mo, int jahr, double p) : Fahrrad(m, mo, jahr) { preis = p; }
+    Fahrrad(string m);
+    Fahrrad(string m, string mo);
+    Fahrrad(string m, string mo, int jahr);
+    Fahrrad(string m, string mo, int jahr, double p);
 
     // Destruktor
-    ~Fahrrad(){}
+    virtual ~Fahrrad(){};
 
     // Get-Methoden
-    string getMarke() const { return marke; }
-    string getModell() const { return modell; }
-    int getModellJahr() const { return modellJahr; }
-    double getPreis() const { return preis; }
+    string getMarke() const;
+    string getModell() const;
+    int getModellJahr() const;
+    double getPreis() const;
 
     // Methode zur Ausgabe von Marke und Modell
-    virtual void nenneMarkeModell(void) const
-    {
-        cout << "Marke: " << getMarke() << ", Modell: " << getModell() << endl;
-    }
+    virtual void nenneMarkeModell(void) const;
 
-    // Methode zu Überprüfung ob E-Bike oder MTB
-    virtual string typeCheck(void) const{return("Fahrrad");}
+    virtual map <string, string> getProperties() const;
 
-    virtual map <string, string> getProperties() const{
-        return {{"Marke",getMarke()},{"Modell", getModell()},{"Modelljahr", to_string(modellJahr) },{"Preis", to_string(preis)}};
-    };
+    virtual Fahrrad* clone() const;
 
 };
+#endif
