@@ -108,7 +108,8 @@
     "typeinfo": "cpp",
     "variant": "cpp",
     "queue": "cpp",
-    "ranges": "cpp"
+    "ranges": "cpp",
+    "map": "cpp"
   },
   "C_Cpp.errorSquiggles": "disabled"
 }

@@ -1,3 +1,7 @@
+//Header Guards
+#ifndef FahrradLaden_HPP
+#define FahrradLaden_HPP
+
 // Include Anweisungen
 #include <math.h>
 #include <iostream>
@@ -5,7 +9,6 @@
 #include <vector>
 #include <fstream>
 #include <map>
-#include "Fahrrad.hpp"
 #include "E_Bike.hpp"
 #include "MTB.hpp"
 
@@ -42,4 +45,4 @@ public:
 
     Fahrrad* cloneFahrrad(Fahrrad* fp);
 };
-
+#endif

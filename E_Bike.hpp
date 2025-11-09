@@ -1,3 +1,7 @@
+//Header Guards
+#ifndef E_Bike_HPP
+#define E_Bike_HPP
+
 // Include Anweisungen
 #include <math.h>
 #include <iostream>
@@ -28,4 +32,4 @@ public:
     // Map der einzelnen Properties
     map<string, string> getProperties() const override;
 };
-
+#endif

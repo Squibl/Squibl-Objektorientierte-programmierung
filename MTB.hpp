@@ -1,3 +1,7 @@
+//Header Guards
+#ifndef MTB_HPP
+#define MTB_HPP
+
 // Include Anweisungen
 #include <math.h>
 #include <iostream>
@@ -15,3 +19,4 @@ public:
     // Konstruktor - Vererbung Fahrrad
     MTB(string m, string mo, int jahr, double p);
 };
+#endif
