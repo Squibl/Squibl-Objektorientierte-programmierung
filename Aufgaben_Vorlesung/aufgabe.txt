@@ -1,73 +1,73 @@
 #include <iostream>
 #include <string.h>
 #include <vector>
+#include <string>
 
 using namespace std;
 
 // String-Class
 class String
 {
-    char *str;
+    vector<char> str;
 
 public:
     // Konstruktor
-    String()
+    String(){}
+    String(const std::string strInput)
     {
-        str = (char *)malloc(sizeof(char));
-    }
-
-    String(const char *strInput)
-    {
-        // Allocate memory of size of strInput & copy strInput into allocated variablel pointer str
-        str = (char *)malloc(strlen(strInput) * sizeof(char));
-        strcpy(str, strInput);
+        for (size_t i = 0; i < strInput.size(); i++)
+        {
+            str.push_back(strInput[i]);
+        }
+        
     }
     // Destructor memory release
-    ~String()
-    {
-        free(str);
-    }
+    ~String(){}
 
     // Output Mehtod
     void print()
     {
-        std::cout << str;
-        std::cout << "\n";
+        for (int i=0; i < str.size(); i++)
+        {
+            std::cout << str.at(i);
+        }
+            std::cout << "\n";
+
     }
 
     // String merge
-    void add(const char *strInput)
-    {
-        char *strOverwriting = static_cast<char *>(malloc(strlen(str) + strlen(strInput) + 1));
-        strcpy(strOverwriting, str);
-        strcat(strOverwriting, strInput);
-        // Free up the old memory and set the pointer to the new memory
-
-        free(str);
-        str = strOverwriting;
+    void add(const std::string strInput)
+    { 
+        for (size_t i = 0; i < strInput.size(); i++)
+        {
+            str.push_back(strInput[i]);
+        }
     }
 
     // Size String
     void size()
     {
-        std::cout << "String lenght:" << strlen(str) + 1 << "\n";
+        std::cout << "String lenght:" << str.size() << "\n";
     }
-
     // String Test auf Gleichheit
-    int isEqual(const char *equalChar)
+    int isEqual(const std::string equalChar)
     {
-        int equalterm = 0;
-        if (strcmp(str, equalChar) == 0)
+        int vergleich=1;
+        for (size_t i = 0; i < str.size(); i++)
         {
-            equalterm = 1;
+            if (str.at(i)!=equalChar.at(i))
+            {
+                vergleich=0;
+                return vergleich;
+            }
         }
-        return equalterm;
+        return vergleich;
     }
 
-    int find(const char *equalChar)
+    int find(const std::string equalChar)
     {
-        int inputGröße = strlen(equalChar);
-        int strObjekt = strlen(str);
+        int inputGröße = equalChar.size();
+        int strObjekt = str.size();
 
         // Wenn der zu suchende String länger ist als der Hauptstring, kann er nicht enthalten sein
         if (inputGröße > strObjekt)
@@ -80,7 +80,7 @@ public:
             int gefunden = true;
             for (int strIndex = 0; strIndex < inputGröße; strIndex++)
             {
-                if (str[i + strIndex] != equalChar[strIndex])
+                if (str.at(i + strIndex) != equalChar.at(strIndex))
                 {
                     gefunden = false;
                     break;
@@ -93,6 +93,7 @@ public:
         }
         return -1; // Nicht gefunden
     }
+    void zuweisung(const String& s);
 };
 
 int main()
@@ -103,8 +104,10 @@ int main()
 
     Name.add("Emden/Leer");
     Name.print();
+    Name.size();
 
-    cout << Name.find("mden");
+    cout << Name.find("Emden");
+    //cout << Name.find("mden");
 
     return 0;
 }
