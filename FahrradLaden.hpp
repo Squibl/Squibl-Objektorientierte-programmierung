@@ -11,6 +11,7 @@
 #include <map>
 #include "E_Bike.hpp"
 #include "MTB.hpp"
+#include <iomanip>
 
 using namespace std;
 
@@ -43,6 +44,6 @@ public:
     // Methode zur Suche einer bestimmten Marke
     void sucheMarke(string Marke);
 
-    Fahrrad* cloneFahrrad(Fahrrad* fp);
+    //Fahrrad* cloneFahrrad(Fahrrad* fp);
 };
 #endif

@@ -10,6 +10,7 @@
 #include <map>
 #include <fstream>
 #include "Fahrrad.hpp"
+#include <iomanip>
 
 using namespace std;
 
@@ -31,5 +32,8 @@ public:
 
     // Map der einzelnen Properties
     map<string, string> getProperties() const override;
+ 
+    // Ausgeben in Tabellenform
+    void ausgeben() override;
 };
 #endif

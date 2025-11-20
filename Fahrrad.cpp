@@ -29,4 +29,4 @@ map <string, string> Fahrrad::getProperties() const{
     return {{"Marke",getMarke()},{"Modell", getModell()},{"Modelljahr", to_string(modellJahr) },{"Preis", to_string(preis)}};
 };
 
-Fahrrad* Fahrrad::clone() const {return new Fahrrad(*this);}
+//Fahrrad* Fahrrad::clone() const {return new Fahrrad(*this);}

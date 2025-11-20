@@ -1,0 +1,69 @@
+// Include Anweisungen
+#include <math.h>
+#include <iostream>
+#include <string>
+#include <map>
+#include <vector>
+#include "FahrradLaden.hpp"
+#include <fstream>
+#include <cctype>
+#include <algorithm>
+
+#define IGNORE 1000
+
+using namespace std;
+
+template<typename T>
+void sortier(T const &start, T const &ende);
+
+int main()
+{
+    vector<int> intWerte;
+    vector<double> doubleWerte;
+
+    srand(time(0));
+
+    //INT
+    for (size_t i = 0; i < 20; i++)
+    {
+
+        intWerte.push_back(rand());
+    }
+    sortier(intWerte.begin(), intWerte.end());
+
+    for (size_t i = 0; i < 20; i++)
+    {
+        cout << intWerte.at(i) << endl;
+    }
+
+    //Double
+    for (size_t i = 0; i < 20; i++)
+    {
+
+        doubleWerte.push_back(rand());
+    }
+    sortier(doubleWerte.begin(), doubleWerte.end());
+
+    for (size_t i = 0; i < 20; i++)
+    {
+        cout << doubleWerte.at(i) << endl;
+    }    
+ 
+}
+
+template<typename T>
+void sortier(T const &start, T const &ende){
+int n = (int)(ende - start) ;
+bool swapped;
+do{
+    swapped = false;
+for(int i = 0; i < n-1; i++)
+{
+    if(start[i]  > start[i+1]){
+        swap(start[i],start[i+1]);
+        swapped = true;
+    }
+}
+n--;
+}while (swapped);
+}

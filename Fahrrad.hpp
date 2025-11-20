@@ -45,7 +45,9 @@ public:
 
     virtual map <string, string> getProperties() const;
 
-    virtual Fahrrad* clone() const;
+    //virtual Fahrrad* clone() const;
+
+    virtual void ausgeben() = 0;
 
 };
 #endif

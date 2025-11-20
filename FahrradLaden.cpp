@@ -26,23 +26,24 @@ Fahrradladen::Fahrradladen(fstream &file)
         file.ignore(IGNORE, '\n');
     }
 }
-
 // Methode zur Ausgabe aller Fahrräder
 void Fahrradladen::nenneFahrrader() const
 {
+    cout << left << setw(12) <<"Marke" << setw(12) <<"Modell" << setw(12) <<"Modelljahr" << setw(8) <<"Preis" << setw(10) << "Kapazitaet" << endl;
     for (size_t i = 0; i < fahrradVector.size(); i++)
     {
-        fahrradVector.at(i)->nenneMarkeModell();
+        fahrradVector.at(i)->ausgeben();
     }
     cout << "Im Fahrradladen sind " << fahrradVector.size() << " Fahrrader vorhanden." << endl;
 }
 // Methode zur Ausgabe bestimmer Fahrradmarke
 void Fahrradladen::sucheAusgeben()
 {
+    cout << left << setw(12) <<"Marke" << setw(12) <<"Modell" << setw(12) <<"Modelljahr" << setw(8) <<"Preis" << setw(10) << "Kapazitaet" << endl;
     // Ausgabe suchVector
     for (size_t i = 0; i < suchVector.size(); i++)
     {
-        suchVector.at(i)->nenneMarkeModell();
+        suchVector.at(i)->ausgeben();
     }
 }
 
@@ -99,7 +100,7 @@ string Fahrradladen::toLowerCase(const string &str)
     return lowerStr;
 }
 
-Fahrrad* Fahrradladen::cloneFahrrad(Fahrrad* fp) {return fp->clone();}
+//Fahrrad* Fahrradladen::cloneFahrrad(Fahrrad* fp) {return fp->clone();}
 
 Fahrradladen::~Fahrradladen()
 {

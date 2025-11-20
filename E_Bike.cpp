@@ -20,3 +20,13 @@ map<string, string> E_Bike::getProperties() const
     return {{"Marke", getMarke()}, {"Modell", getModell()}, {"Modelljahr", to_string(getModellJahr())}, {"Preis", to_string(getPreis())}, {"Kapazitaet", to_string(kapazitaet)}};
 };
 
+void E_Bike::ausgeben(){
+    map<string, string> info;
+    info = getProperties();
+    info["Preis"].resize(6);
+    cout << left << setw(12) <<  info["Marke"];
+    cout << left << setw(12) <<  info["Modell"];
+    cout << left << setw(12) <<  info["Modelljahr"];
+    cout << left << setw(8) <<  info["Preis"];
+    cout << left << setw(10)  <<  info["Kapazitaet"] << endl;
+}
