@@ -93,7 +93,9 @@ public:
         }
         return -1; // Nicht gefunden
     }
-    void zuweisung(const String& s);
+    void zuweisung(const String& s){
+        
+    };
 };
 
 int main()
