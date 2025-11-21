@@ -21,6 +21,7 @@ private:
     string modell;
     int modellJahr;
     double preis;
+    double originalPreis;
 
 public:
     // Default Konstruktor
@@ -48,6 +49,8 @@ public:
     //virtual Fahrrad* clone() const;
 
     virtual void ausgeben() = 0;
+
+    void setPreis(double neuerPreis);
 
 };
 #endif

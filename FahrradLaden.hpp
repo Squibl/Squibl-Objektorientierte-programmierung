@@ -45,5 +45,12 @@ public:
     void sucheMarke(string Marke);
 
     //Fahrrad* cloneFahrrad(Fahrrad* fp);
+
+
+    //Sortierfunktion
+    void sortier();
+
+    //Preis verändern
+    void preisAnpassen(double neuerPreis, string marke);
 };
 #endif

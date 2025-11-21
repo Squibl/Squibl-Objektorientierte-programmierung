@@ -11,7 +11,7 @@ Fahrrad::Fahrrad()
 Fahrrad::Fahrrad(string m) : Fahrrad() { marke = m; }
 Fahrrad::Fahrrad(string m, string mo) : Fahrrad(m) { modell = mo; }
 Fahrrad::Fahrrad(string m, string mo, int jahr) : Fahrrad(m, mo) { modellJahr = jahr; }
-Fahrrad::Fahrrad(string m, string mo, int jahr, double p) : Fahrrad(m, mo, jahr) { preis = p; }
+Fahrrad::Fahrrad(string m, string mo, int jahr, double p) : Fahrrad(m, mo, jahr) { preis = p; originalPreis = p;}
 
 // Get-Methoden
 string Fahrrad::getMarke() const { return marke; }
@@ -30,3 +30,14 @@ map <string, string> Fahrrad::getProperties() const{
 };
 
 //Fahrrad* Fahrrad::clone() const {return new Fahrrad(*this);}
+
+void Fahrrad::setPreis(double neuerPreis){
+    if (neuerPreis != -1){
+
+        preis = preis * (neuerPreis/100);
+    }
+    else{
+        preis = originalPreis;
+    }
+}
+

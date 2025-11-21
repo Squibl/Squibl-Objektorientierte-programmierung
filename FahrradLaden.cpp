@@ -85,6 +85,7 @@ void Fahrradladen::sucheMarke(string Marke)
         }
     }
     sucheAusgeben();
+    
 }
 
 
@@ -109,5 +110,42 @@ Fahrradladen::~Fahrradladen()
     for (Fahrrad *f : fahrradVector)
     {
         delete f;
+    }
+}
+
+
+void Fahrradladen::sortier(){
+size_t n = (size_t)(fahrradVector.end() - fahrradVector.begin());
+unsigned short int vertauschungen = 0;
+unsigned short int vergleiche = 0;
+bool swapped;
+
+do{
+    
+    swapped = false;
+for(size_t i = 0; i < n-1; i++)
+{
+    vergleiche ++;
+    if(fahrradVector.at(i)->getModellJahr()  > fahrradVector.at(i+1)->getModellJahr()){
+        swap(fahrradVector.at(i),fahrradVector.at(i+1));
+        vertauschungen ++;
+        swapped = true;
+    }
+}
+n--;
+}while (swapped);
+
+
+cout << "Anzahl der Vertauschungen: " << vertauschungen << "\n" << "Anzahl der Vegleiche: " << vergleiche << endl;
+}
+
+
+
+void Fahrradladen::preisAnpassen(double neuerPreis, string marke){
+
+    cout << "Fahrraeder die geaendert werden:\n";
+    sucheMarke(marke);
+    for (Fahrrad* fp : suchVector){
+        fp->setPreis(neuerPreis);
     }
 }

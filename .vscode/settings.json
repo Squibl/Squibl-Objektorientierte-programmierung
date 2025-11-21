@@ -111,7 +111,8 @@
     "ranges": "cpp",
     "map": "cpp",
     "cstring": "cpp",
-    "iomanip": "cpp"
+    "iomanip": "cpp",
+    "sstream": "cpp"
   },
   "C_Cpp.errorSquiggles": "disabled"
 }

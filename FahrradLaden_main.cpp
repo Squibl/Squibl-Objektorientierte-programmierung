@@ -24,6 +24,7 @@ int main(void)
     fstream MyFile("fahrradliste.txt");
     Fahrradladen Laden(MyFile);
     string eingabeString;
+    float eingabeFloat;
     int menüWahl;
 
     // While-Loop
@@ -31,7 +32,7 @@ int main(void)
     {
         menüWahl = EXIT;
         cout << "\nOption:\tWaehle einen Punkt:\n"
-             << "1:Programm beenden\n2:Alles ausgeben\n3:Marke suchen\n4:Typ suchen (E-Bike/MTB)" << endl;
+             << "1:Programm beenden\n2:Alles ausgeben\n3:Marke suchen\n4:Typ suchen (E-Bike/MTB)\n5:Liste nach Modelljahr sortieren\n6:Preis von Fahrreader einer Marke aendern" << endl;
         cin >> menüWahl;
 
         
@@ -52,15 +53,25 @@ int main(void)
                 Laden.nenneFahrrader();
                 break;
             case 3: // Suche
-                cout << "Gebe die gesuchte Marke ein: " << endl;
+                cout << "Gebe die gesuchte Marke ein: ";
                 cin >> eingabeString;
                 Laden.sucheMarke(eingabeString);
                 break;
             case 4:                
-                cout << "Gebe den gesuchten Typ ein (E-Bike oder MTB): " << endl;
+                cout << "Gebe den gesuchten Typ ein (E-Bike oder MTB): ";
                 cin >> eingabeString;
                 Laden.sucheTyp(eingabeString);
                 break;
+            case 5:
+                Laden.sortier();
+                cout << "Fahrradliste wurde sortiert.";
+                break;
+            case 6:
+                cout << "Gebe die gesuchte Marke ein: ";
+                cin >> eingabeString;
+                cout <<"Geben sie die Preisaenderung in Prozent an (geben sie -1 ein um Preise zurueckzusetzen): ";
+                cin >> eingabeFloat;
+                Laden.preisAnpassen(eingabeFloat, eingabeString);
             default:
                 break;
             }
