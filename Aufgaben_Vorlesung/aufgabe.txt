@@ -1,115 +1,153 @@
-#include <iostream>
-#include <string.h>
-#include <vector>
 #include <string>
+#include <vector>
+#include <iostream>
 
 using namespace std;
 
-// String-Class
-class String
+// ------------------------------------------------------
+// Basisklasse
+// ------------------------------------------------------
+class MyString
 {
-    vector<char> str;
-
 public:
-    // Konstruktor
-    String(){}
-    String(const std::string strInput)
-    {
-        for (size_t i = 0; i < strInput.size(); i++)
-        {
-            str.push_back(strInput[i]);
-        }
-        
-    }
-    // Destructor memory release
-    ~String(){}
+    virtual ~MyString() {};
 
-    // Output Mehtod
-    void print()
-    {
-        for (int i=0; i < str.size(); i++)
-        {
-            std::cout << str.at(i);
-        }
-            std::cout << "\n";
+    virtual std::string to_string() const = 0;
 
-    }
+    virtual int len() const = 0;
 
-    // String merge
-    void add(const std::string strInput)
-    { 
-        for (size_t i = 0; i < strInput.size(); i++)
-        {
-            str.push_back(strInput[i]);
-        }
-    }
+    virtual int find(const MyString &s) const = 0;
 
-    // Size String
-    void size()
-    {
-        std::cout << "String lenght:" << str.size() << "\n";
-    }
-    // String Test auf Gleichheit
-    int isEqual(const std::string equalChar)
-    {
-        int vergleich=1;
-        for (size_t i = 0; i < str.size(); i++)
-        {
-            if (str.at(i)!=equalChar.at(i))
-            {
-                vergleich=0;
-                return vergleich;
-            }
-        }
-        return vergleich;
-    }
+    virtual void clear() = 0;
 
-    int find(const std::string equalChar)
-    {
-        int inputGröße = equalChar.size();
-        int strObjekt = str.size();
-
-        // Wenn der zu suchende String länger ist als der Hauptstring, kann er nicht enthalten sein
-        if (inputGröße > strObjekt)
-        {
-            return -1;
-        }
-
-        for (int i = 0; i <= strObjekt - inputGröße; i++)
-        {
-            int gefunden = true;
-            for (int strIndex = 0; strIndex < inputGröße; strIndex++)
-            {
-                if (str.at(i + strIndex) != equalChar.at(strIndex))
-                {
-                    gefunden = false;
-                    break;
-                }
-            }
-            if (gefunden)
-            {
-                return i; // Start-Position zurückgeben
-            }
-        }
-        return -1; // Nicht gefunden
-    }
-    void zuweisung(const String& s){
-        
-    };
+    virtual void print() = 0;
 };
 
+// ------------------------------------------------------
+// Abgeleitete Klasse "String"
+// ------------------------------------------------------
+class String : public MyString
+{
+private:
+    vector<char> data;
+
+public:
+    // Konstruktoren
+    String() {}
+
+    String(const std::string &s)
+    {
+        for (char c : s)
+            data.push_back(c);
+    }
+
+    // Konvertiert in std::string
+    std::string to_string() const override
+    {
+        return std::string(data.begin(), data.end());
+    }
+
+    // Länge des Strings
+    int len() const override
+    {
+        return data.size();
+    }
+
+    // find-Funktion
+    int find(const MyString &s) const override
+    {
+        std::string search = s.to_string();
+        std::string base = this->to_string();
+
+        size_t pos = base.find(search);
+        if (pos == std::string::npos)
+            return -1;
+        return pos;
+    }
+
+    // clear
+    void clear() override
+    {
+        data.clear();
+    }
+
+    // print
+    void print() override
+    {
+        for (char c : data)
+            cout << c;
+        cout << "\n";
+    }
+
+    // ------------------------------------------------------
+    // Operatoren
+    // ------------------------------------------------------
+
+    // +=  Append + Assign
+    String &operator+=(const MyString &s)
+    {
+        std::string add = s.to_string();
+        for (char c : add)
+            data.push_back(c);
+
+        return *this;
+    }
+
+    // Vergleichsoperatoren (String-basierend)
+    bool operator==(const MyString &s) const
+    {
+        return this->to_string() == s.to_string();
+    }
+
+    bool operator!=(const MyString &s) const
+    {
+        return !(*this == s);
+    }
+
+    bool operator<(const MyString &s) const
+    {
+        return this->to_string() < s.to_string();
+    }
+
+    bool operator>(const MyString &s) const
+    {
+        return this->to_string() > s.to_string();
+    }
+
+    bool operator<=(const MyString &s) const
+    {
+        return !(*this > s);
+    }
+
+    bool operator>=(const MyString &s) const
+    {
+        return !(*this < s);
+    }
+};
+
+// ------------------------------------------------------
+// Beispiel main()
+// ------------------------------------------------------
 int main()
 {
-    String Name("FH:");
-    Name.print();
-    Name.size();
+    String a("FH:");
+    String b("Emden");
 
-    Name.add("Emden/Leer");
-    Name.print();
-    Name.size();
+    a.print();
+    b.print();
 
-    cout << Name.find("Emden");
-    //cout << Name.find("mden");
+    a += b; // operator+=
+    a.print();
+
+    cout << "Length a: " << a.len() << endl;
+
+    cout << "Find 'den': " << a.find(String("den")) << endl;
+
+    cout << "Vergleich: ";
+    if (a == b)
+        cout << "gleich\n";
+    else
+        cout << "ungleich\n";
 
     return 0;
 }

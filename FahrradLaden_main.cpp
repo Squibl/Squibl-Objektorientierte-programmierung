@@ -64,7 +64,7 @@ int main(void)
                 break;
             case 5:
                 Laden.sortier();
-                cout << "Fahrradliste wurde sortiert.";
+                cout << "Fahrradliste wurde sortiert.\n";
                 break;
             case 6:
                 cout << "Gebe die gesuchte Marke ein: ";
